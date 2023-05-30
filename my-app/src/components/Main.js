@@ -3,7 +3,9 @@ import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import ReactPlayer from "react-player";
 import Rocket from "./rocket.gif";
+
 import Logo from "./spacex-logo-black-and-white.png";
 
 export default function Main() {
@@ -11,6 +13,7 @@ export default function Main() {
   const [launchpadData, setLaunchpadData] = useState({});
   const [crewData, setCrewData] = useState([]);
   const carouselRef = useRef(null);
+  const [youtubeVideoUrl, setYoutubeVideoUrl] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -35,6 +38,12 @@ export default function Main() {
           crewIds.includes(crew.id)
         );
         setCrewData(filteredCrewData);
+
+        const youtubeVideoResponse = await axios.get(
+          "https://api.spacexdata.com/v4/launches/latest"
+        );
+        const youtubeVideo = youtubeVideoResponse.data.links.youtube_id;
+        setYoutubeVideoUrl(`https://www.youtube.com/watch?v=${youtubeVideo}`);
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +67,6 @@ export default function Main() {
     details: launchpadDetails,
     images: launchpadImages,
   } = launchpadData;
-
   const prevSlide = () => {
     setCurrentSlide((prevSlide) => prevSlide - 1);
   };
@@ -71,11 +79,13 @@ export default function Main() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex bg-black ">
+      <div className="flex bg-black  p-4 rounded-lg shadow-lg mb-4">
         <div
           className="bg-black p-4 rounded-lg shadow-lg mb-4 font-bold text-white"
           style={{ flex: 1 }}
         >
+          <h3>SPACEX</h3>
+          <br />
           <p>
             The Space Exploration Technologies Corporation, commonly referred to
             as SpaceX[7] is an American spacecraft manufacturer, launcher, and
@@ -92,35 +102,55 @@ export default function Main() {
           <img src={Rocket} alt="GIF" />
         </div>
       </div>
-
-      <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
-        <h2 className="text-2xl font-bold mb-4">En Son Fırlatma Detayları</h2>
-        <h3 className="text-xl mb-2 font-bold">{name}</h3>
-        <p className="mb-1 font-bold">Tarih: {formattedDate}</p>
-        <p className="mb-1 font-bold">Başarı: {success ? "Evet" : "Hayır"}</p>
-        <p className="mb-4 font-bold">Detaylar: {details || "Bilgi yok"}</p>
-        {patch && (
-          <img
-            src={patch.large}
-            alt="Fırlatma Yaması"
-            className="w-48 mb-4 font-bold"
-          />
-        )}
+      <h2 className="text-2xl font-bold mb-4 text-center">
+        En Son Fırlatma Detayları
+      </h2>
+      <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4">
+        <div className="flex">
+          <div className="w-1/2">
+            <h3 className="text-xl mb-2 font-bold">{name}</h3>
+            <p className="mb-1 font-bold">Tarih: {formattedDate}</p>
+            <p className="mb-1 font-bold">
+              Başarı: {success ? "Evet" : "Hayır"}
+            </p>
+            <p className="mb-4 font-bold">Detaylar: {details || "Bilgi yok"}</p>
+            {patch && (
+              <img
+                src={patch.large}
+                alt="Fırlatma Yaması"
+                className="w-48 mb-4 font-bold"
+              />
+            )}
+          </div>
+          <div className="w-1/2">
+            {youtubeVideoUrl && (
+              <div className="mt-4">
+                <ReactPlayer
+                  url={youtubeVideoUrl}
+                  controls
+                  width="500px"
+                  height="400px"
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
+
       <div className="bg-black p-4 rounded-lg shadow-lg mb-4 text-white">
         <h2 className="text-2xl font-bold mb-4 text-center">
           Mürettebat Detayları
         </h2>
         <div className="relative">
           <div className="overflow-hidden">
-            {/* Carousel */}
+            {/* Carousel başlangıcı */}
             <Carousel
               ref={carouselRef}
               selectedItem={currentSlide}
               onChange={(index) => setCurrentSlide(index)}
               showArrows={false}
               showStatus={false}
-              showIndicators={crewData.length > 1} // Yalnızca birden fazla fotoğraf varsa noktaları göster
+              showIndicators={crewData.length > 1} // Yalnızca birden fazla fotoğraf varsa
               showThumbs={false}
             >
               {crewData.map((crewMember) => (
@@ -138,7 +168,7 @@ export default function Main() {
                 </div>
               ))}
             </Carousel>
-            {/* End of Carousel */}
+            {/* Carousel bitiyor */}
           </div>
           <div className="absolute inset-y-1/2 left-0 flex items-center">
             <button
@@ -160,7 +190,7 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
+      <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4">
         <h2 className="text-2xl font-bold mb-4">Fırlatma Alanı Detayları</h2>
         <h3 className="text-xl mb-2 font-bold">{launchpadName}</h3>
         <p className="mb-1 font-bold">Tam Adı: {launchpadFullName}</p>

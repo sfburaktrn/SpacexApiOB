@@ -82,19 +82,19 @@ export default function GecmisFirlatma() {
           </NavLink>
         </div>
       </div>
-      <h1 className="text-center font-bold text-black pt-4">
+      <h1 className="text-center font-bold text-black pt-4 text-3xl">
         Geçmiş Fırlatmalar
       </h1>
 
       <FormGroup>
         <Label className="text-black font-bold" for="exampleSearch">
-          Ara
+          Arama Yapabilirsin
         </Label>
         <Input
           onChange={handleSearch}
           id="exampleSearch"
           name="search"
-          placeholder="Arama Yeri"
+          placeholder="Aramak İstediğiniz Fırlatmanın İsmini Yazın"
           type="search"
         />
       </FormGroup>
@@ -109,7 +109,7 @@ export default function GecmisFirlatma() {
                 {launch.name}
               </AccordionHeader>
               {open === launch.id && (
-                <div className="AccordionPanel">
+                <div className="AccordionPanel  bg-black text-white">
                   <p>Tarih: {launch.date_utc}</p>
                   <p>Başarılı: {launch.success ? "Evet" : "Hayır"}</p>
                   <p>Detaylar: {launch.details || "N/A"}</p>

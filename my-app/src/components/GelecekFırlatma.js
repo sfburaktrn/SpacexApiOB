@@ -79,34 +79,35 @@ export default function GelecekFirlatma() {
           </NavLink>
         </div>
       </div>
-      <h1 className="text-center font-bold text-black pt-4">
+      <h1 className="text-center font-bold text-black pt-4 text-3xl">
         Gelecek Fırlatmalar
       </h1>
 
       <FormGroup>
         <Label className="text-black font-bold" for="exampleSearch">
-          Search
+          Arama Yapabilirsin
         </Label>
         <Input
           onChange={handleSearch}
           id="exampleSearch"
           name="search"
-          placeholder="Search Placeholder"
+          placeholder="Aramak İstediğiniz Fırlatmanın İsmini Yazın"
           type="search"
         />
       </FormGroup>
-      <Accordion open={open} toggle={toggle} className="pt-5">
+      <Accordion open={open} toggle={toggle}>
         {launches
           .filter((launch) =>
             launch.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((launch) => (
-            <AccordionItem key={launch.id}>
+            <AccordionItem key={launch.id} className="">
               <AccordionHeader onClick={() => toggle(launch.id)}>
                 {launch.name}
               </AccordionHeader>
+
               {open === launch.id && (
-                <div className="AccordionPanel">
+                <div className="AccordionPanel bg-black text-white">
                   <p>Date: {launch.date_utc}</p>
                   <p>Success: {launch.success ? "Yes" : "No"}</p>
                   <p>Details: {launch.details || "N/A"}</p>

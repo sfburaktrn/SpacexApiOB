@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 import GelecekFirlatma from "./components/GelecekFırlatma";
 import GecmisFirlatma from "./components/GecmisFırlatma";
 import "./App.css";
@@ -13,6 +14,7 @@ const SpaceXLaunches = () => {
         <Route exact path="/">
           <Header />
           <Main />
+          <Footer />
         </Route>
         <Route exact path="/GelecekFirlatma">
           <GelecekFirlatma />
