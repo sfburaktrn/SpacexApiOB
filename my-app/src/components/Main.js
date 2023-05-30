@@ -6,8 +6,6 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ReactPlayer from "react-player";
 import Rocket from "./rocket.gif";
 
-import Logo from "./spacex-logo-black-and-white.png";
-
 export default function Main() {
   const [launchData, setLaunchData] = useState({});
   const [launchpadData, setLaunchpadData] = useState({});
@@ -67,6 +65,7 @@ export default function Main() {
     details: launchpadDetails,
     images: launchpadImages,
   } = launchpadData;
+
   const prevSlide = () => {
     setCurrentSlide((prevSlide) => prevSlide - 1);
   };
@@ -79,11 +78,8 @@ export default function Main() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex bg-black  p-4 rounded-lg shadow-lg mb-4">
-        <div
-          className="bg-black p-4 rounded-lg shadow-lg mb-4 font-bold text-white"
-          style={{ flex: 1 }}
-        >
+      <div className="flex flex-col md:flex-row bg-black p-4 rounded-lg shadow-lg mb-4">
+        <div className="md:w-1/2 bg-black p-4 rounded-lg shadow-lg mb-4 font-bold text-white">
           <h3>SPACEX</h3>
           <br />
           <p>
@@ -98,16 +94,16 @@ export default function Main() {
             mega-constellation satellite.
           </p>
         </div>
-        <div style={{ flex: 1 }}>
-          <img src={Rocket} alt="GIF" />
+        <div className="md:w-1/2 flex justify-center items-center">
+          <img src={Rocket} alt="GIF" className="w-auto h-auto" />
         </div>
       </div>
       <h2 className="text-2xl font-bold mb-4 text-center">
         En Son Fırlatma Detayları
       </h2>
       <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4">
-        <div className="flex">
-          <div className="w-1/2">
+        <div className="flex flex-col md:flex-row">
+          <div className="md:w-1/2">
             <h3 className="text-xl mb-2 font-bold">{name}</h3>
             <p className="mb-1 font-bold">Tarih: {formattedDate}</p>
             <p className="mb-1 font-bold">
@@ -122,14 +118,15 @@ export default function Main() {
               />
             )}
           </div>
-          <div className="w-1/2">
+          <div className="md:w-1/2 mt-4 md:mt-0">
             {youtubeVideoUrl && (
-              <div className="mt-4">
+              <div className="aspect-w-16 aspect-h-9">
                 <ReactPlayer
                   url={youtubeVideoUrl}
                   controls
-                  width="500px"
-                  height="400px"
+                  className="rounded-lg"
+                  width="auto"
+                  height="500px"
                 />
               </div>
             )}
@@ -143,14 +140,13 @@ export default function Main() {
         </h2>
         <div className="relative">
           <div className="overflow-hidden">
-            {/* Carousel başlangıcı */}
             <Carousel
               ref={carouselRef}
               selectedItem={currentSlide}
               onChange={(index) => setCurrentSlide(index)}
               showArrows={false}
               showStatus={false}
-              showIndicators={crewData.length > 1} // Yalnızca birden fazla fotoğraf varsa
+              showIndicators={crewData.length > 1} // Only show indicators if there are multiple photos
               showThumbs={false}
             >
               {crewData.map((crewMember) => (
@@ -168,7 +164,6 @@ export default function Main() {
                 </div>
               ))}
             </Carousel>
-            {/* Carousel bitiyor */}
           </div>
           <div className="absolute inset-y-1/2 left-0 flex items-center">
             <button
@@ -190,6 +185,7 @@ export default function Main() {
           </div>
         </div>
       </div>
+
       <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4">
         <h2 className="text-2xl font-bold mb-4">Fırlatma Alanı Detayları</h2>
         <h3 className="text-xl mb-2 font-bold">{launchpadName}</h3>
