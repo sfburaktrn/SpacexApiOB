@@ -16,7 +16,7 @@ import {
 } from "reactstrap";
 import { AccordionHeader } from "reactstrap";
 
-export default function GelecekFirlatma() {
+export default function FutureLaunch() {
   const [search, setSearch] = useState("");
   const [launches, setLaunches] = useState([]);
   const [open, setOpen] = useState(null);
@@ -59,6 +59,11 @@ export default function GelecekFirlatma() {
     setSearch(event.target.value);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
   return (
     <div className="App">
       <div className="bg-black text-white p-6 flex justify-between items-center">
@@ -67,31 +72,31 @@ export default function GelecekFirlatma() {
         </div>
 
         <div className="ml-2 space-x-2">
-          <NavLink to="/GecmisFirlatma">
+          <NavLink to="/PastLaunch">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
-              Geçmiş Fırlatma
+              Past Launch
             </button>
           </NavLink>
           <NavLink to="/">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
-              ANASAYFA
+              HOME PAGE
             </button>
           </NavLink>
         </div>
       </div>
       <h1 className="text-center font-bold text-black pt-4 text-3xl">
-        Gelecek Fırlatmalar
+        Future Launches
       </h1>
 
       <FormGroup>
         <Label className="text-black font-bold" for="exampleSearch">
-          Arama Yapabilirsin
+          Search
         </Label>
         <Input
           onChange={handleSearch}
           id="exampleSearch"
           name="search"
-          placeholder="Aramak İstediğiniz Fırlatmanın İsmini Yazın"
+          placeholder="Type the Name of the Launch You Want to Search"
           type="search"
         />
       </FormGroup>
@@ -108,7 +113,7 @@ export default function GelecekFirlatma() {
 
               {open === launch.id && (
                 <div className="AccordionPanel bg-black text-white">
-                  <p>Date: {launch.date_utc}</p>
+                  <p>Date: {formatDate(launch.date_utc)}</p>
                   <p>Success: {launch.success ? "Yes" : "No"}</p>
                   <p>Details: {launch.details || "N/A"}</p>
                 </div>

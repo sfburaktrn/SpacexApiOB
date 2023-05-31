@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 import { AccordionHeader } from "reactstrap";
 
-export default function GecmisFirlatma() {
+export default function PastLaunch() {
   const [search, setSearch] = useState("");
   const [launches, setLaunches] = useState([]);
   const [open, setOpen] = useState(null);
@@ -62,6 +62,11 @@ export default function GecmisFirlatma() {
     setSearch(event.target.value);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
   return (
     <div className="App">
       <div className="bg-black text-white p-6 flex justify-between items-center">
@@ -70,31 +75,31 @@ export default function GecmisFirlatma() {
         </div>
 
         <div className="ml-2 space-x-2">
-          <NavLink to="/GelecekFirlatma">
+          <NavLink to="/FutureLaunch">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
-              Gelecek Fırlatma
+              Future Launch
             </button>
           </NavLink>
           <NavLink to="/">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
-              ANASAYFA
+              HOME PAGE
             </button>
           </NavLink>
         </div>
       </div>
       <h1 className="text-center font-bold text-black pt-4 text-3xl">
-        Geçmiş Fırlatmalar
+        Past Launches
       </h1>
 
       <FormGroup>
         <Label className="text-black font-bold" for="exampleSearch">
-          Arama Yapabilirsin
+          Search
         </Label>
         <Input
           onChange={handleSearch}
           id="exampleSearch"
           name="search"
-          placeholder="Aramak İstediğiniz Fırlatmanın İsmini Yazın"
+          placeholder="Type the Name of the Launch You Want to Search"
           type="search"
         />
       </FormGroup>
@@ -110,9 +115,9 @@ export default function GecmisFirlatma() {
               </AccordionHeader>
               {open === launch.id && (
                 <div className="AccordionPanel  bg-black text-white">
-                  <p>Tarih: {launch.date_utc}</p>
-                  <p>Başarılı: {launch.success ? "Evet" : "Hayır"}</p>
-                  <p>Detaylar: {launch.details || "N/A"}</p>
+                  <p>Date: {formatDate(launch.date_utc)}</p>
+                  <p>Success: {launch.success ? "Yes" : "No"}</p>
+                  <p>Details: {launch.details || "N/A"}</p>
                   <img src={launch.links.patch.small} alt="Fırlatma Logosu" />
                 </div>
               )}

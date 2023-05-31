@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import GelecekFirlatma from "./components/GelecekFırlatma";
-import GecmisFirlatma from "./components/GecmisFırlatma";
+import FutureLaunch from "./components/FutureLaunch";
+import PastLaunch from "./components/PastLaunch";
 import "./App.css";
 
 const SpaceXLaunches = () => {
@@ -16,11 +16,11 @@ const SpaceXLaunches = () => {
           <Main />
           <Footer />
         </Route>
-        <Route exact path="/GelecekFirlatma">
-          <GelecekFirlatma />
+        <Route exact path="/FutureLaunch">
+          <FutureLaunch />
         </Route>
-        <Route exact path="/GecmisFirlatma">
-          <GecmisFirlatma />
+        <Route exact path="/PastLaunch">
+          <PastLaunch />
         </Route>
       </BrowserRouter>
     </div>

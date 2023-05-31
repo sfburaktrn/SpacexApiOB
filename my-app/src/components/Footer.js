@@ -22,6 +22,7 @@ export default function Footer() {
               href="https://github.com/r-spacex/SpaceX-API"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white"
             >
               GitHub{" "}
             </a>
@@ -33,6 +34,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/sefaburaktorun/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white"
             >
               Sefa Burak Torun{" "}
             </a>{" "}
@@ -41,6 +43,7 @@ export default function Footer() {
               href="https://www.linkedin.com/company/%C3%B6%C4%9Frenci-baksana/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-yellow-400"
             >
               Öğrenci Baksana{" "}
             </a>{" "}
