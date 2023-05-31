@@ -94,9 +94,12 @@ export default function PastLaunch() {
           </NavLink>
         </div>
       </div>
+      <h1 className="text-center font-bold text-black pt-4 text-3xl">
+        Past Launches
+      </h1>
 
       <FormGroup>
-        <Label className="text-black font-bold" for="exampleSearch">
+        <Label className="text-black font-bold pt-3" for="exampleSearch">
           Search
         </Label>
         <Input

@@ -90,7 +90,7 @@ export default function FutureLaunch() {
       </h1>
 
       <FormGroup>
-        <Label className="text-black font-bold" for="exampleSearch">
+        <Label className="text-black font-bold pt-3" for="exampleSearch">
           Search
         </Label>
         <Input
