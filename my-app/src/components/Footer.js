@@ -16,10 +16,34 @@ export default function Footer() {
             Corporation (SpaceX)
           </p>
           <br />
-          <p>Built using the API maintained by /r/spacex on GitHub</p>
+          <p>
+            Built using the API maintained by /r/spacex on{" "}
+            <a
+              href="https://github.com/r-spacex/SpaceX-API"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub{" "}
+            </a>
+          </p>
           <br />
           <p>
-            It was lovingly made by Sefa Burak Torun for the Öğrenci Baksana
+            It was lovingly made by{" "}
+            <a
+              href="https://www.linkedin.com/in/sefaburaktorun/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sefa Burak Torun{" "}
+            </a>{" "}
+            for the{" "}
+            <a
+              href="https://www.linkedin.com/company/%C3%B6%C4%9Frenci-baksana/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Öğrenci Baksana{" "}
+            </a>{" "}
             team in 2023.
           </p>
           <br />
