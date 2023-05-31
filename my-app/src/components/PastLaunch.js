@@ -66,30 +66,34 @@ export default function PastLaunch() {
     const date = new Date(dateString);
     return date.toLocaleDateString();
   };
+  const scrollToLatestLaunch = () => {
+    const mainSection = document.getElementById("latestLaunchSection");
+    if (mainSection) {
+      mainSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="App">
-      <div className="bg-black text-white p-6 flex justify-between items-center">
-        <div>
-          <img src={Logo} alt="SpaceX Logo" className="h-8 w-56" />
-        </div>
-
-        <div className="ml-2 space-x-2">
+      <div className="bg-black text-white p-6 flex flex-col sm:flex-row justify-between items-center hover:text-black">
+        <a href="/">
+          <div>
+            <img src={Logo} alt="SpaceX Logo" className="h-8 w-56" />
+          </div>
+        </a>
+        <div className="mt-4 sm:mt-0 sm:ml-2 space-x-2">
           <NavLink to="/FutureLaunch">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
               Future Launch
             </button>
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/PastLaunch">
             <button className="text-[12px] font-bold py-2 px-4 rounded-2xl border-white border-2 hover:bg-white hover:text-black">
-              HOME PAGE
+              Past Launch
             </button>
           </NavLink>
         </div>
       </div>
-      <h1 className="text-center font-bold text-black pt-4 text-3xl">
-        Past Launches
-      </h1>
 
       <FormGroup>
         <Label className="text-black font-bold" for="exampleSearch">

@@ -1,8 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import Logo from "./spacex-logo-black-and-white.png";
-import Bg from "./Bg.gif";
 
 export default function Footer() {
   const history = useHistory();
