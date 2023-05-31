@@ -81,7 +81,7 @@ export default function Main() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4 text-center ">SPACEX INFO</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">SPACEX INFO</h2>
       <div className="flex flex-col md:flex-row bg-black p-4 rounded-lg shadow-lg mb-4">
         <div className="md:w-1/2 bg-black p-4 rounded-lg shadow-lg mb-4 font-bold text-white">
           <h3>SPACEX</h3>
@@ -102,11 +102,11 @@ export default function Main() {
           <img src={Rocket} alt="GIF" className="w-auto h-auto" />
         </div>
       </div>
-      <h2 className="text-2xl font-bold mb-4 text-center ">Launch Photos</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">Launch Photos</h2>
       <Slide />
       <h2
         id="latestLaunchSection"
-        className="text-2xl font-bold mb-4 text-center "
+        className="text-2xl font-bold mb-4 text-center"
       >
         Latest Launch Details
       </h2>
@@ -123,7 +123,7 @@ export default function Main() {
               <img
                 src={patch.large}
                 alt="Fırlatma Yaması"
-                className="w-52 mb-4 font-bold pt-3 ml-32"
+                className="w-52 mb-4 font-bold pt-3 mx-auto"
               />
             )}
           </div>
@@ -144,7 +144,7 @@ export default function Main() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4 text-center">Crew Details </h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">Crew Details</h2>
 
       <div className="bg-black p-4 rounded-lg shadow-lg mb-4 text-white">
         <div className="relative">
@@ -167,7 +167,7 @@ export default function Main() {
                     <img
                       src={crewMember.image}
                       alt={crewMember.name}
-                      className="w-auto h-96 object-contain mr-4 mb-4 rounded-4 "
+                      className="w-auto h-96 object-contain mx-auto mb-4 rounded-4"
                     />
                   )}
                 </div>
@@ -197,10 +197,10 @@ export default function Main() {
       <h2 className="text-2xl font-bold mb-4 text-center">
         Launch Area Details
       </h2>
-      <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4 flex">
+      <div className="bg-black text-white p-4 rounded-lg shadow-lg mb-4 flex flex-col md:flex-row">
         <div className="flex-1">
           <h3 className="text-xl mb-2 font-bold">{launchpadName}</h3>
-          <p className="mb-1 font-bold">Full name : {launchpadFullName}</p>
+          <p className="mb-1 font-bold">Full name: {launchpadFullName}</p>
           <p className="mb-1 font-bold">Place: {locality}</p>
           <p className="mb-1 font-bold">Area: {region}</p>
           <p className="mb-1 font-bold">Latitude: {latitude}</p>
@@ -222,7 +222,7 @@ export default function Main() {
                   key={index}
                   src={image}
                   alt={`Fırlatma Alanı Resmi ${index + 1}`}
-                  className="w-auto h-auto object-cover mr-4 mb-4 rounded-4"
+                  className="w-auto h-auto object-cover mx-auto mb-4 rounded-4"
                 />
               ))}
             </div>
